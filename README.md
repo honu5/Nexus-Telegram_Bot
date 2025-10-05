@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Currency Converter Bot API
 
 Minimal Express API to convert currency amounts. Designed to be used by a chat bot (e.g., Telegram) or directly via HTTP.
@@ -42,3 +43,7 @@ npm test
 - server/services/ratesServices.js — rate fetching + cache
 - server/utils/server.js — bootstrap
 - tests/ — Jest tests
+=======
+# Nexus-Telegram_Bot
+A telegram bot buikt with node and express
+>>>>>>> e70bc7efa8f3c7db552828263e14a8e0db205542
