@@ -1,6 +1,6 @@
 class Parser{
-    parse(string){
-        const splitString=string.split(" ");
+    parse(message){
+        const splitString=message.split(" ");
         if(splitString.length!==4){
             console.log("Please use the correct format");
             return null;
