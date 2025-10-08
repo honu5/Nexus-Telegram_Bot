@@ -1,6 +1,8 @@
 const TelegramBot=require('node-telegram-bot-api');
 
 const RateService=require('../services/ratesServices.js');
+
+const Parser=require('../utils/parser.js')
 require('dotenv').config()
 
 const currencyapi = require('@everapi/currencyapi-js');
