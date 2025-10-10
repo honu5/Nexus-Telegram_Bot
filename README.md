@@ -3,16 +3,18 @@ A telegram bot built with node.js and JavaScript. The telegram bot we build help
 
 ### Folder Structure
 
-server/
-├─ bot.js          
-├─ services/ratesService.js
-└─ utils/parser.js
+```
+/currencytelegrambot
+├─ server/       
+│  ├─ bot.js          
+│  ├─ services/ratesService.js
+│  └─ utils/parser.js
+├─ tests/
+│  └─ parser.test.js
+├─ .env
+├─ package.json
 
-tests/
-  └─ parser.test.js
-  
-.env
-package.json
+```
 
 
 # Quick Start
