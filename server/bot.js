@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const TelegramBot=require('node-telegram-bot-api');
 
 const Parser=require('./utils/parser.js')
@@ -5,7 +7,7 @@ const Parser=require('./utils/parser.js')
 const RateService=require('./services/ratesServices.js');
 
 
-require('dotenv').config()
+
 
 const token=process.env.TOKEN;
 
@@ -23,21 +25,25 @@ bot.onText(/\/convertCurrency (.+)/,async (msg,match)=>{
             return bot.sendMessage(chatId,"Please use the correct format");
         }
 
-        const result = await RateService.convert(parsed.amount, parsed.from, parsed.to);
-        bot.sendMessage(chatId, `💱 ${parsed.amount} ${parsed.from} = ${result.toFixed(2)} ${parsed.to}`);
+    const result = await RateService.convert(parsed.amount, parsed.from, parsed.to);
+    bot.sendMessage(chatId, ` ${parsed.amount} ${parsed.from} = ${result.toFixed(2)} ${parsed.to}`,{parse_mode:"Markdown"});
 
-        //call RateService
-        //send formatted reply back to user
+    
     }catch(error){
         bot.sendMessage(chatId,"Couldn't convert currency: "+ error.message)
     }
    
 })
 
-bot.on("message",(msg)=>{
-    const chatId=msg.chat.id;
-    bot.sendMessage(chatId,"Please use the following format eg: 100 USD to EUR")
-})
+bot.on("message", (msg) => {
+  const chatId = msg.chat.id;
+
+  // Ignore /convertCurrency command (it is already handled)
+  if (!msg.text.startsWith('/convertCurrency')) {
+    bot.sendMessage(chatId, "👉 Use `/convertCurrency 100 USD to EUR`", { parse_mode: "Markdown" });
+  }
+});
+
 
 
 
