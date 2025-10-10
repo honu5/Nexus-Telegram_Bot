@@ -38,7 +38,6 @@ bot.onText(/\/convertCurrency (.+)/,async (msg,match)=>{
 bot.on("message", (msg) => {
   const chatId = msg.chat.id;
 
-  // Ignore /convertCurrency command (it is already handled)
   if (!msg.text.startsWith('/convertCurrency')) {
     bot.sendMessage(chatId, "`/convertCurrency amount USD to EUR` \n you can just click the above line to copy paste  and then change the inputs", { parse_mode: "Markdown" });
   }
