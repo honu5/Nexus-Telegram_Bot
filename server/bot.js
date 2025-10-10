@@ -40,7 +40,7 @@ bot.on("message", (msg) => {
 
   // Ignore /convertCurrency command (it is already handled)
   if (!msg.text.startsWith('/convertCurrency')) {
-    bot.sendMessage(chatId, "👉 Use `/convertCurrency 100 USD to EUR`", { parse_mode: "Markdown" });
+    bot.sendMessage(chatId, "Use `/convertCurrency amount USD to EUR` /n you can just copy it and change the inputs", { parse_mode: "Markdown" });
   }
 });
 
