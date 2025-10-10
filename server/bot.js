@@ -2,7 +2,8 @@ const TelegramBot=require('node-telegram-bot-api');
 
 const Parser=require('./utils/parser.js')
 
-//const RateService=require('./services/ratesServices.js');
+const RateService=require('./services/ratesServices.js');
+
 
 require('dotenv').config()
 
@@ -21,6 +22,10 @@ bot.onText(/\/convertCurrency (.+)/,async (msg,match)=>{
         if(!parsed){
             return bot.sendMessage(chatId,"Please use the correct format");
         }
+
+        const result = await RateService.convert(parsed.amount, parsed.from, parsed.to);
+        bot.sendMessage(chatId, `💱 ${parsed.amount} ${parsed.from} = ${result.toFixed(2)} ${parsed.to}`);
+
         //call RateService
         //send formatted reply back to user
     }catch(error){
